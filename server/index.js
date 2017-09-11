@@ -1,42 +1,34 @@
-import path from 'path';
 import express from 'express';
-import webpack from 'webpack';
-import reactApp from '../app/server.js';
-import configDev from '../webpack/webpack.config.dev';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
+import fs from 'fs';
+import mongoose from 'mongoose';
+import passport from 'passport';
+import secrets from './config/secrets';
+import mongoExpress from 'mongo-express/lib/middleware';
+
+import mongoExpressConfig from './config/mongo-express';
 
 const app = express();
-const port = process.env.PORT || 3000;
 
-if(process.env.NODE_ENV === 'development') {
-  const compiler = webpack(configDev);
+app.use('/admin', mongoExpress(mongoExpressConfig));
 
-  app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: configDev.output.publicPath,
-    stats: {
-      assets: false,
-      colors: true,
-      version: false,
-      hash: false,
-      timings: false,
-      chunks: false,
-      chunkModules: false
-    }
-  }));
-  app.use(webpackHotMiddleware(compiler));
-  app.use(express.static(path.resolve(__dirname, '..', 'app', 'static')));
-} else if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.resolve(__dirname, '..', 'build')));
-}
+const connect = () => {
+  mongoose.connect(secrets.db, (err)  => err
+    ? console.log('Error connecting to: ' + secrets.db + '. ' + err)
+    : console.log('Succeeded connected to: ' + secrets.db)
+  );
+};
+connect();
 
-app.get('*', reactApp);
+mongoose.connection.on('error', console.log);
+mongoose.connection.on('disconnected', connect);
 
-app.listen(port, '0.0.0.0', (err) => {
-  if(err) {
-    console.error(err); // eslint-disable-line no-console
-  } else {
-    console.info(`Listening at http://localhost:${port}`); // eslint-disable-line no-console
-  }
-});
+// Bootstrap models
+fs.readdirSync(__dirname + '/models')
+  .forEach(file => ~file.indexOf('.js') && require(__dirname + '/models/' + file));
+
+
+require('./config/passport')(app, passport);
+require('./config/express')(app, passport);
+require('./config/routes')(app, passport);
+
+app.listen(app.get('port'));
