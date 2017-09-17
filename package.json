@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "autoprefixer": "^6.3.7",
+    "axios": "^0.16.2",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
@@ -64,14 +65,15 @@
     "react-router-redux": "^4.0.5",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
-    "redux-thunk": "^2.1.0",
+    "redux-saga": "^0.15.6",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.12.2",
-    "webpack-isomorphic-tools": "^2.5.8"
+    "webpack-isomorphic-tools": "^2.5.8",
+    "babel-plugin-transform-runtime": "^6.23.0"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",
