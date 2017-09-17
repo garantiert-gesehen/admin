@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Router } from 'react-router';
 import { Provider } from 'react-redux';
 
-import routes from '../../routes';
+import createRoutes from '../../routes';
 
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
 
     return (
       <Provider store={store}>
-          <Router history={history} onUpdate={onUpdate} routes={routes} />
+          <Router history={history} onUpdate={onUpdate} routes={createRoutes(store)} />
       </Provider>
     );
   }

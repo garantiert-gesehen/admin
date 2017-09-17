@@ -5,15 +5,25 @@ const crypto = require('crypto');
 const UserSchema = new mongoose.Schema({
   email: { type: String, unique: true, lowercase: true, required: true},
   password: { type: String },
-  tokens: Array,
+
   profile: {
-    name: { type: String, required: true},
+    firstName: { type: String, required: true},
     lastName: { type: String, required: true},
-    gender: { type: String, default: ''},
-    location: { type: String, default: ''},
-    website: { type: String, default: ''},
-    picture: { type: String, default: ''}
+    picture: { type: String, default: ''},
   },
+
+  isAdmin: { type: Boolean },
+  isOwner: { type: Boolean },
+  isScout: { type: Boolean },
+  isManager: { type: Boolean },
+
+  // ownerProfile: {
+  //   location: { type: mongoose.Schema.Types.ObjectId, ref: 'Location' },
+  //   bank: { ... }
+  // },
+  // scoutProfile, managerProfile
+
+  tokens: Array,
   resetPasswordToken: String,
   resetPasswordExpires: Date
 });
@@ -23,12 +33,18 @@ const UserSchema = new mongoose.Schema({
  * Password hash middleware.
  */
 UserSchema.pre('save', function(next) {
-  var user = this;
-  if (!user.isModified('password')) return next();
+  const user = this;
+  if (!user.isModified('password')) {
+    return next();
+  }
   bcrypt.genSalt(5, function(err, salt) {
-    if (err) return next(err);
-    bcrypt.hash(user.password, salt, null, function(err, hash) {
-      if (err) return next(err);
+    if (err) {
+      return next(err);
+    }
+    bcrypt.hash(user.password, salt, null, (err, hash) => {
+      if (err) {
+        return next(err);
+      }
       user.password = hash;
       next();
     });
@@ -41,7 +57,9 @@ UserSchema.pre('save', function(next) {
 UserSchema.methods = {
   comparePassword: function(candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-      if(err) return cb(err);
+      if (err) {
+        return cb(err);
+      }
       cb(null, isMatch);
     })
   }

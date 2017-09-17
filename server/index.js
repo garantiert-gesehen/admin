@@ -29,6 +29,6 @@ fs.readdirSync(__dirname + '/models')
 
 require('./config/passport')(app, passport);
 require('./config/express')(app, passport);
-require('./config/routes')(app, passport);
+require('./routes')(app);
 
 app.listen(app.get('port'));

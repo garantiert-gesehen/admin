@@ -1,19 +1,23 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import thunkMiddleware from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 import createLogger from 'redux-logger';
 import rootReducer from './reducers';
+import { routerMiddleware } from 'react-router-redux'
+import { browserHistory } from 'react-router';
+import sagas from './sagas';
 
 const loggerMiddleware = createLogger();
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 export default function configureStore({ preloadedState, isClient }) {
-	const middlewares = [thunkMiddleware];
+  const sagaMiddleware = createSagaMiddleware();
+  const middlewares = [sagaMiddleware,  routerMiddleware(browserHistory)];
 
 	if (isDevelopment && isClient) {
 		middlewares.push(loggerMiddleware);
 	}
 
-	return createStore(
+  const store = createStore(
 		rootReducer,
 		preloadedState,
 		compose(
@@ -23,4 +27,8 @@ export default function configureStore({ preloadedState, isClient }) {
 				: f => f
 		)
 	);
+
+  sagaMiddleware.run(sagas);
+
+  return store;
 }
