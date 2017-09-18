@@ -1,20 +1,21 @@
 @import '../../styles/settings';
 
-.header {
+.menu {
   padding: 20px;
   display: flex;
-  flex-basis: 50px;
+  flex-basis: 200px;
+  flex-direction: column;
 
   justify-content: flex-end;
-  box-shadow: 0 0 3px transparentize($colorBlack, 0.5);
+  box-shadow: 0 0 2px transparentize($colorBlack, 0.5);
 
   &__user {
-    align-items: center;
+    align-items: flex-end;
     display: flex;
+    flex-direction: column;
   }
 
   &__logout {
     font-size: 14px;
-    margin-left: 20px;
   }
 }

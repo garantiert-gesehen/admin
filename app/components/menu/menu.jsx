@@ -3,34 +3,34 @@ import React, { Component } from 'react';
 
 import Link from '../link/link.jsx';
 
-import './header.scss';
+import './menu.scss';
 
-class Header extends Component {
+class Menu extends Component {
   render() {
     const { firstName, lastName, logout, logouting } = this.props;
 
     return (
-      <header className="header">
-        <div className="header__user">
-          <span className="header__name">{`${firstName} ${lastName}`}</span>
+      <div className="menu">
+        <div className="menu__user">
+          <span className="menu__name">{`${firstName} ${lastName}`}</span>
           <Link
-            className="header__logout"
+            className="menu__logout"
             disabled={logouting}
             onClick={logout}
           >
             {logouting ? 'Logging out…' : 'Logout'}
           </Link>
         </div>
-      </header>
+      </div>
     );
   }
 }
 
-Header.propTypes = {
+Menu.propTypes = {
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   logout: PropTypes.func,
   logouting: PropTypes.bool
 };
 
-export default Header;
+export default Menu;
