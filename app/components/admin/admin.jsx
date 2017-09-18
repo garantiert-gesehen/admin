@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import Header from '../header/headerContainer';
+import Menu from '../menu/menuContainer';
 
 import './admin.scss';
 
 const Admin = (props) => (
   <div className="admin">
-    <Header />
+    <Menu />
     {props.children}
   </div>
 );

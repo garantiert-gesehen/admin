@@ -17,7 +17,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 module.exports = (app, passport) => {
   app.set('port', (process.env.PORT || 3000));
 
-  // X-Powered-By header has no functional value.
+  // X-Powered-By menu has no functional value.
   // Keeping it makes it easier for an attacker to build the site's profile
   // It can be removed safely
   app.disable('x-powered-by');

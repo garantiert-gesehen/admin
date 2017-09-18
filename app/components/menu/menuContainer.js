@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../redux/actions/user';
 import get from 'lodash/get';
 
-import Header from './header.jsx';
+import Menu from './menu.jsx';
 
 const mapStateToProps = ({ user }) => ({
   firstName: get(user, 'profile.firstName'),
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
