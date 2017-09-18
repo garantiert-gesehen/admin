@@ -1,0 +1,18 @@
+@import '../../styles/settings';
+
+
+.link {
+  cursor: pointer;
+  color: $materialBlue700;
+  transition: color .2s ease-out 0s;
+  text-decoration: none;
+
+  & {
+    -moz-transition: none;
+  }
+
+  &:hover {
+    color: $materialPinkA400;
+    transition: none;
+  }
+}

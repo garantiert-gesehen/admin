@@ -17,8 +17,20 @@ export function* login() {
   }
 }
 
+export function* logout() {
+  try {
+    yield call(api.logout);
+    yield put(actions.logoutSuccess());
+    yield put(push('/'));
+
+  } catch (error) {
+    yield put(actions.logoutFail());
+  }
+}
+
 export default function* root() {
   yield all([
-    takeEvery(constants.LOGIN, login)
+    takeEvery(constants.LOGIN, login),
+    takeEvery(constants.LOGOUT, logout)
   ]);
 }

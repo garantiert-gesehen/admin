@@ -17,3 +17,13 @@ export const loginFail = (error) =>
 
 export const setUser = (user) =>
   ({ type: constants.SET_USER, user });
+
+
+export const logout = () =>
+  ({ type: constants.LOGOUT });
+
+export const logoutSuccess = () =>
+  ({ type: constants.LOGOUT_SUCCESS });
+
+export const logoutFail = () =>
+  ({ type: constants.LOGOUT_FAIL });

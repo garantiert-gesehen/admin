@@ -1,0 +1,20 @@
+@import '../../styles/settings';
+
+.header {
+  padding: 20px;
+  display: flex;
+  flex-basis: 50px;
+
+  justify-content: flex-end;
+  box-shadow: 0 0 3px transparentize($colorBlack, 0.5);
+
+  &__user {
+    align-items: center;
+    display: flex;
+  }
+
+  &__logout {
+    font-size: 14px;
+    margin-left: 20px;
+  }
+}

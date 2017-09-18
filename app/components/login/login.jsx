@@ -7,7 +7,7 @@ import Input from '../input/input.jsx';
 
 import './login.scss';
 
-class Home extends Component {
+class Login extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.props.login();
@@ -47,7 +47,7 @@ class Home extends Component {
   }
 }
 
-Home.propTypes = {
+Login.propTypes = {
   error: PropTypes.string,
   loading: PropTypes.bool,
   email: PropTypes.string,
@@ -57,4 +57,4 @@ Home.propTypes = {
   login: PropTypes.func
 };
 
-export default Home;
+export default Login;
