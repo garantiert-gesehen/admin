@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import PageMeta from './__meta/page__meta.jsx';
 
+import './page.scss';
+
 const Page = ({ children }) => (
     <div className="page">
         <PageMeta />

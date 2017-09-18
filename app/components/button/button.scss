@@ -1,0 +1,25 @@
+@import '../../styles/settings';
+
+.button {
+  font-size: $fontNormal;
+  height: auto;
+  line-height: 46px;
+  text-transform: none;
+
+  &.button.button {
+    &_primary {
+      background: $materialGreen700;
+      color: $colorWhite;
+
+      &:hover {
+        background: $materialGreen800;
+      }
+    }
+
+    &[disabled] {
+      pointer-events: none;
+      background: transparentize($colorBlack, 0.86);
+      color: transparentize($colorBlack, 0.5);
+    }
+  }
+}

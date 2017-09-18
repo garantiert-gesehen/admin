@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Router } from 'react-router';
 import { Provider } from 'react-redux';
 
+import './app.scss';
+
 import createRoutes from '../../routes';
 
 class App extends Component {

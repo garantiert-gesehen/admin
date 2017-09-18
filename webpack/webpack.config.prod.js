@@ -43,6 +43,11 @@ module.exports = Object.assign(webpackConfigBase, {
         test: /\.scss/,
         loader: ExtractTextPlugin.extract('style', 'css!sass!postcss'),
         include: path.resolve(__dirname, '..', 'app')
+      },
+      {
+        test: /\.scss/,
+        loader: 'style!css?modules!sass!postcss',
+        include: path.resolve(__dirname, '..', 'node_modules', 'react-toolbox')
       }
     ])
   }
