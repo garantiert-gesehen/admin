@@ -1,0 +1,27 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400&subset=latin);
+@import '../../styles/settings';
+
+body {
+  font-family: $fontFamily;
+  font-size: $fontMedium;
+  font-weight: 300;
+  font-smoothing: antialiased;
+  margin: 0;
+  line-height: 1.5em;
+}
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  min-height: 100%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}

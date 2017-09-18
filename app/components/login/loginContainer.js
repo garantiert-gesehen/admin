@@ -11,8 +11,8 @@ const mapStateToProps = ({ user }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setEmail: ({ target: { value } }) => dispatch(setEmail(value)),
-  setPassword: ({ target: { value } }) => dispatch(setPassword(value)),
+  setEmail: (value) => dispatch(setEmail(value)),
+  setPassword: (value) => dispatch(setPassword(value)),
   login: () => dispatch(login())
 });
 

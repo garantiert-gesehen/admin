@@ -1,0 +1,24 @@
+@import '../../styles/settings';
+
+.input {
+  padding: 20px 0;
+
+  &__bar {
+    &:before, &:after {
+      background: $materialGreen900;
+    }
+  }
+  &__element,
+  &__hint {
+    font-size: $fontNormal;
+    line-height: $fontNormal;
+  }
+
+  &__element {
+    padding: 0 0 5px;
+  }
+
+  &__hint {
+    top: 22px;
+  }
+}

@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import './dashboard.scss';
+
 const Dashboard = (props) => (
-  <div className="admin">
-    {props.children}
+  <div className="dashboard">
+    <span>Welcome to dashboard</span>
   </div>
 );
 
