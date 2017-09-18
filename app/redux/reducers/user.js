@@ -15,6 +15,13 @@ export default (state = initialState, action) => {
     case constants.SET_PASSWORD:
       return { ...state, error: '', password: action.password };
 
+    case constants.LOGOUT:
+      return { ...state, error: '', logouting: true };
+    case constants.LOGOUT_SUCCESS:
+      return initialState;
+    case constants.LOGOUT_FAIL:
+      return { ...state, error: '', logouting: false };
+
     case constants.LOGIN:
       return { ...state, error: '', loading: true };
 

@@ -7,3 +7,5 @@ export const login = (data) => {
       throw new Error('wrong login or password');
     });
 };
+
+export const logout = () => axios.post('/api/logout/');
