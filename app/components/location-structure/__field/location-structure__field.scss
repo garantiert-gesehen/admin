@@ -28,12 +28,12 @@
     height: 46px;
   }
 
-  &__permissions-icon {
+  .location-structure__permissions-icon {
     font-size: 20px;
     color: transparentize($colorBlack, 0.6);
   }
 
-  &__remove {
+  .location-structure__remove {
     margin-left: 30px;
     color: $materialRed800;
     cursor: pointer;
