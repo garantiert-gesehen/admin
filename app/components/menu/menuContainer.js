@@ -12,7 +12,7 @@ const mapStateToProps = ({ user, routing }) => ({
   isManager: user.isManager,
   isOwner: user.isOwner,
   loading: user.logouting,
-  currentPath: routing.locationBeforeTransitions.pathname
+  currentPath: get(routing, 'locationBeforeTransitions.pathname')
 });
 
 const mapDispatchToProps = (dispatch) => ({
