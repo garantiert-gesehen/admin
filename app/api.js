@@ -9,3 +9,19 @@ export const login = (data) => {
 };
 
 export const logout = () => axios.post('/api/logout/');
+
+export const getLocationStructure = () => {
+  return axios.get('/api/locationStructures/current/')
+    .then(res => res.data.fields)
+    .catch(() => {
+      throw new Error('wrong get request for location structure');
+    });
+};
+
+export const updateLocationStructure = (data) => {
+  return axios.post('/api/locationStructures/current/', data)
+    .then(res => res.data.fields)
+    .catch(() => {
+      throw new Error('wrong update request for location structure');
+    });
+};

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import user from './user';
+import locationStructure from './locationStructure';
 
 export default combineReducers({
-    user,
-    routing: routerReducer
+  locationStructure,
+  user,
+  routing: routerReducer
 });

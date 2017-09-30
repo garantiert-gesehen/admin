@@ -4,10 +4,15 @@ import get from 'lodash/get';
 
 import Menu from './menu.jsx';
 
-const mapStateToProps = ({ user }) => ({
+const mapStateToProps = ({ user, routing }) => ({
   firstName: get(user, 'profile.firstName'),
   lastName: get(user, 'profile.lastName'),
-  loading: user.logouting
+  isAdmin: user.isAdmin,
+  isScout: user.isScout,
+  isManager: user.isManager,
+  isOwner: user.isOwner,
+  loading: user.logouting,
+  currentPath: routing.locationBeforeTransitions.pathname
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -15,9 +15,12 @@ const REACT_SCRIPTS = {
 
 const APP_STYLESHEETS = {
   production: [
-    { rel: 'stylesheet', href: '/bundle.css' }
+    { rel: 'stylesheet', href: '/bundle.css' },
+    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
   ],
-  development: []
+  development: [
+    { rel: 'stylesheet', href: 'https://fonts.googleapis.com/icon?family=Material+Icons' }
+  ]
 };
 
 const Html = ({ body, preloadedState }) => {

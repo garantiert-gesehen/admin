@@ -1,0 +1,36 @@
+@import '../../styles/settings';
+
+.dropdown {
+  margin-bottom: 3px;
+  outline: none;
+
+  &__selected.dropdown__selected {
+    color: inherit;
+    background: transparentize($colorBlack, 0.96)
+  }
+
+  &__input {
+    padding: 20px 0;
+  }
+
+  &__input-element {
+    font-size: inherit;
+    padding: 5px 0;
+  }
+
+  &__value {
+    padding: 0;
+
+    &:after {
+      transform: scale(0.5);
+    }
+  }
+
+  &__values {
+    padding: 0;
+
+    li {
+      padding: 5px 10px;
+    }
+  }
+}

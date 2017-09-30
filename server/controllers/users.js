@@ -13,14 +13,14 @@ exports.postLogin = (req, res, next) => {
       return next(err);
     }
     if (!user) {
-      return res.status(401).json({ message: info.message});
+      return res.status(401).json({ message: info.message });
     }
     // Passport exposes a login() function on req (also aliased as
     // logIn()) that can be used to establish a login session
     req.logIn(user, (err) => err
       ? res.status(401).json({message: err})
       : res.status(200).json({
-          user: {id: user.id, email: user.email, profile: user.profile},
+          user,
           message: 'You have been successfully logged in.'
         })
     );
