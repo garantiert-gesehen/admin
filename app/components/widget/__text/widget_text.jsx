@@ -42,11 +42,14 @@ class Text extends Component {
       <div>
         <Input
           ref={element => { this.input = element; }}
-          className={classNames('widget_text', { 'widget_hidden': !active })}
+          className={classNames('widget', { 'widget_hidden': !active })}
           hint={`Enter ${title}`}
           onBlur={this.onBlur}
+          multiline
           onChange={this.onChange}
-          value={this.state.value} />
+          theme={{ inputElement: 'widget__text-input' }}
+          value={this.state.value}
+        />
         {!active && <Placeholder hint={`Enter ${title}`} value={this.state.value} />}
       </div>
     );
