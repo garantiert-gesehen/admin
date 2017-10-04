@@ -31,7 +31,7 @@ class Locations extends Component {
       <div className="locations">
         {(loading || creating || deleting) && <Progress />}
         <h1>Locations</h1>
-        <div>
+        <div className="locations__control-panel">
           <Button className="locations__add" onClick={createLocation}>Add location</Button>
         </div>
           {structureFields.length > 0 && (
