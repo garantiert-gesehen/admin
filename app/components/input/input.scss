@@ -1,7 +1,7 @@
 @import '../../styles/settings';
 
 .input.input {
-  padding: 20px 0;
+  padding: 10px 0;
 
   .input {
     &__bar {
@@ -11,16 +11,16 @@
     }
     &__element,
     &__hint {
-      font-size: $fontNormal;
-      line-height: $fontNormal;
+      font-size: inherit;
+      line-height: inherit;
     }
 
     &__element {
-      padding: 0 0 5px;
+      padding: 0 0 4px;
     }
 
     &__hint {
-      top: 22px;
+      top: 12px;
     }
   }
 }

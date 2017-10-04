@@ -1,10 +1,11 @@
 @import '../../styles/settings';
 
 .menu {
-  padding: 20px;
+  padding: 20px 0;
   display: flex;
   flex-basis: 200px;
   flex-direction: column;
+  flex-shrink: 0;
 
   justify-content: flex-end;
   box-shadow: 0 0 2px transparentize($colorBlack, 0.5);
@@ -13,9 +14,28 @@
     align-items: flex-end;
     display: flex;
     flex-direction: column;
+    padding: 0 20px;
   }
 
   &__logout {
     font-size: 14px;
+  }
+
+  &__content {
+    padding: 20px 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    padding: 10px 20px;
+    transition: background 0.2s ease-out;
+
+    &_active {
+      pointer-events: none;
+      color: $colorBlack;
+      background: #f5f5f5;
+    }
   }
 }

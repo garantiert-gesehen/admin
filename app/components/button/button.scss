@@ -1,14 +1,16 @@
 @import '../../styles/settings';
 
 .button.button.button.button {
-  font-size: $fontNormal;
+  font-size: inherit;
   height: auto;
-  line-height: 46px;
+  line-height: 36px;
   text-transform: none;
+  box-shadow: inset 0 0 0 1px transparentize($colorBlack, 0.8);
 
   &_primary {
     background: $materialGreen700;
     color: $colorWhite;
+    box-shadow: none;
 
     &:hover {
       background: $materialGreen800;

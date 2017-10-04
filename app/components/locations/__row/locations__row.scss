@@ -1,0 +1,19 @@
+@import '../../../styles/settings';
+
+.locations {
+  &__row {
+
+  }
+
+  &__row-remove {
+    color: $materialRed800;
+    cursor: pointer;
+    font-weight: bold;
+    height: 100%;
+    display: block;
+
+    &:hover {
+      color: $materialRed500;
+    }
+  }
+}

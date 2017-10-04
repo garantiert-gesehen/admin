@@ -5,7 +5,11 @@ const initialState = {
   email: '',
   password: '',
   loading: false,
-  error: ''
+  error: '',
+  isAdmin: false,
+  isScout: false,
+  isOwner: false,
+  isManager: false
 };
 
 export default (state = initialState, action) => {
@@ -29,18 +33,16 @@ export default (state = initialState, action) => {
       return { ...state, loading: false, error: action.error };
 
     case constants.LOGIN_SUCCESS:
+    case constants.SET_USER:
       return {
         ...state,
         loading: false,
         error: '',
         profile: action.user.profile,
-        isAuthenticated: true
-      };
-
-    case constants.SET_USER:
-      return {
-        ...state,
-        profile: action.user.profile,
+        isAdmin: action.user.isAdmin,
+        isScout: action.user.isScout,
+        isOwner: action.user.isOwner,
+        isManager: action.user.isManager,
         isAuthenticated: true
       };
 

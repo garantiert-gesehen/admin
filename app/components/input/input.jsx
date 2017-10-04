@@ -1,19 +1,27 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Component } from 'react';
 import { Input as ToolboxInput } from 'react-toolbox/lib/input';
 
 import extendTheme from '../../utils/extendTheme';
 import './input.scss';
 
-const Input = (props) => {
-  const theme = {
-    input: 'input',
-    bar: 'input__bar',
-    inputElement: 'input__element',
-    hint: 'input__hint'
-  };
+class Input extends  Component {
+  render() {
+    const theme = {
+      input: 'input',
+      bar: 'input__bar',
+      inputElement: 'input__element',
+      hint: 'input__hint'
+    };
 
-  return <ToolboxInput {...props} theme={extendTheme(theme, props.theme)} />
+    return (
+      <ToolboxInput
+        {...this.props}
+        theme={extendTheme(theme, this.props.theme)}
+        ref={element => { this.toolboxInput = element; }}
+      />
+    );
+  }
 };
 
 Input.propTypes = {

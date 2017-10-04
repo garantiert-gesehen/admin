@@ -1,0 +1,45 @@
+@import '../../styles/settings';
+
+.location-structure {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+
+  &__footer {
+    flex-shrink: 0;
+    border-top: 1px solid transparentize($colorBlack, 0.86);
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+  }
+
+  .location-structure__add {
+    margin-top: 10px;
+    cursor: pointer;
+    color: $materialGreen700;
+    font-weight: bold;
+    font-size: 32px;
+
+    &:hover {
+      color: $materialGreen900;
+    }
+  }
+
+  &__title {
+    width: 100px;
+    position: absolute;
+    left: 10px;
+    top: -50px;
+    text-align: left;
+    transform: rotate(-60deg);
+  }
+
+  &__header-cell {
+    position: relative;
+  }
+}

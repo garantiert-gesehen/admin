@@ -7,10 +7,30 @@ import './menu.scss';
 
 class Menu extends Component {
   render() {
-    const { firstName, lastName, logout, logouting } = this.props;
+    const { firstName, lastName, logout, logouting, isAdmin } = this.props;
 
     return (
       <div className="menu">
+        <div className="menu__content">
+          {isAdmin && (
+            <Link
+              isRouter
+              className="menu__item"
+              activeClassName="menu__item_active"
+              to="/location-structure"
+            >
+              Location structure
+            </Link>
+          )}
+          <Link
+            isRouter
+            className="menu__item"
+            activeClassName="menu__item_active"
+            to="/locations"
+          >
+            Locations
+          </Link>
+        </div>
         <div className="menu__user">
           <span className="menu__name">{`${firstName} ${lastName}`}</span>
           <Link

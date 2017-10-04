@@ -8,7 +8,9 @@ import './admin.scss';
 const Admin = (props) => (
   <div className="admin">
     <Menu />
-    {props.children}
+    <div className="admin__content">
+      {props.children}
+    </div>
   </div>
 );
 
