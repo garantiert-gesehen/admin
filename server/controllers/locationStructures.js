@@ -4,10 +4,14 @@ import mongoose from 'mongoose';
 const LocationStructure = mongoose.model('LocationStructure');
 const Location = mongoose.model('Location');
 
-export function getCurrentStructure(req, res) {
-  LocationStructure
+export function selectCurrentStructure() {
+  return LocationStructure
     .findOne()
     .sort({ created_at: -1 })
+}
+
+export function getCurrentStructure(req, res) {
+  selectCurrentStructure()
     .exec((err, locationStructure) => {
       if(!err) {
         return res.json(locationStructure);

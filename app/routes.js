@@ -6,6 +6,7 @@ import Inner from './components/inner/inner.jsx';
 import Admin from './components/admin/admin.jsx';
 import Dashboard from './components/dashboard/dashboard.jsx';
 import LocationStructure from './components/location-structure/locationStructureContainer';
+import Locations from './components/locations/locationsContainer';
 import Login from './components/login/loginContainer';
 
 export default store => {
@@ -53,6 +54,7 @@ export default store => {
             component={LocationStructure}
             onEnter={(nextState, replace, callback) => requireRole(nextState, replace, callback, ['isAdmin'])}
           />
+          <Route path="/locations" component={Locations} />
         </Route>
       </Route>
     </Route>

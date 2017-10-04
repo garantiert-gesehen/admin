@@ -19,7 +19,7 @@ export const updateLocationStructure = () =>
 export const updateLocationStructureSuccess = (fields) =>
   ({ type: constants.UPDATE_LOCATION_STRUCTURE_SUCCESS, fields });
 
-export const updateLocationStructureFali = (error) =>
+export const updateLocationStructureFail = (error) =>
   ({ type: constants.UPDATE_LOCATION_STRUCTURE_FAIL, error });
 
 export const changeField = (index, field) =>

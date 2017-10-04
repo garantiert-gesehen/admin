@@ -22,6 +22,14 @@ class Menu extends Component {
               Location structure
             </Link>
           )}
+          <Link
+            isRouter
+            className="menu__item"
+            activeClassName="menu__item_active"
+            to="/locations"
+          >
+            Locations
+          </Link>
         </div>
         <div className="menu__user">
           <span className="menu__name">{`${firstName} ${lastName}`}</span>

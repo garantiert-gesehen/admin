@@ -1,0 +1,14 @@
+.locations {
+  &__field {
+    position: relative;
+    height: 60px;
+    cursor: pointer;
+  }
+
+  &__progress {
+    position: absolute;
+    bottom: 0;
+    top: auto;
+    height: 2px;
+  }
+}

@@ -2,11 +2,13 @@ import mongoose from 'mongoose';
 import mongoosePaginate from 'mongoose-paginate';
 
 const LocationSchema = new mongoose.Schema({
-  name: { type: String, required: true },
   owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  fields: [{
+    ref: { type: String, required: true },
+    value: { type: String, required: true }
+  }],
   dateCreated: { type: Date, default: Date.now },
-  structure: { type: mongoose.Schema.Types.ObjectId, ref: 'Structure' },
   values: { type: String }
 });
 

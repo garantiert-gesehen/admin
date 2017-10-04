@@ -3,6 +3,7 @@
 import mongoose from 'mongoose';
 const LocationStructure = mongoose.model('LocationStructure');
 const Location = mongoose.model('Location');
+import { selectCurrentStructure } from './locationStructures';
 
 export function getAll(req, res) {
   Location
@@ -15,12 +16,19 @@ export function getAll(req, res) {
       path: 'creator',
       select: 'profile'
     })
-    .exec((err, location) => {
-      if(!err) {
-        return res.json(location);
+    .exec((err, locations) => {
+      if(err) {
+        return res.status(400).json({ message: err.errors });
       }
 
-      console.log('Error in first query');
+      selectCurrentStructure()
+        .exec((err, locationStructure) => {
+          if(err) {
+            return res.status(400).json({ message: err.errors });
+          }
+
+          res.json({ locations, structureFields: locationStructure.fields });
+        });
   });
 }
 
@@ -29,6 +37,10 @@ export function getLocationById(req, res) {
     .findById(req.params.id)
     .populate({
       path: 'owner',
+      select: 'profile'
+    })
+    .populate({
+      path: 'creator',
       select: 'profile'
     })
     .exec((err, location) => {
@@ -40,18 +52,75 @@ export function getLocationById(req, res) {
     });
 }
 
-
 export function create(req, res) {
   const { body } = req;
 
   body.creator = req.user.id;
 
-  Room.create(req.body, (err, location) => {
+  Location
+    .create(body, (err, location) => {
+      Location
+        .findById(location._id)
+        .populate({
+          path: 'owner',
+          select: 'profile'
+        })
+        .populate({
+          path: 'creator',
+          select: 'profile'
+        })
+        .exec((err, location) => {
+          if (err) {
+            return res.status(400).json({ message: err.errors });
+          }
+          return res.status(200).send({ location });
+        });
+    })
+}
+
+export function deleteLocation(req, res) {
+  Location.findByIdAndRemove(req.params.locationId, (err) => {
     if (err) {
       return res.status(400).json({ message: err.errors });
     }
-    return res.status(200).send({id: location._id});
+
+    return res.status(200).send(req.params.locationId);
   });
+}
+
+export function updateField(req, res) {
+  const { fieldId, locationId } = req.params;
+
+  Location
+    .findById(locationId)
+    .exec((err, location) => {
+      const fields = location.fields || [];
+      const fieldToUpdateIndex = fields.findIndex(field => field.ref === fieldId);
+
+
+      if (fieldToUpdateIndex > -1) {
+        fields[fieldToUpdateIndex].value = req.body.value;
+      } else {
+        fields.push({ value: req.body.value, ref: fieldId });
+      }
+
+      Location
+        .findByIdAndUpdate(locationId, { $set: { fields } }, { new: true })
+        .populate({
+          path: 'owner',
+          select: 'profile'
+        })
+        .populate({
+          path: 'creator',
+          select: 'profile'
+        })
+        .exec((err, location) => {
+          if (err) {
+            return res.status(400).json({ message: err.errors });
+          }
+          return res.status(200).send(location);
+        })
+    })
 }
 
 //

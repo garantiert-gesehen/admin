@@ -22,13 +22,12 @@ export function* updateLocationStructure() {
     yield put(actions.updateLocationStructureSuccess(newFields));
 
   } catch (error) {
-    yield put(actions.updateLocationStructureFali(error.message));
+    yield put(actions.updateLocationStructureFail(error.message));
   }
 }
 
 export function* init() {
   yield put(actions.getLocationStructure());
-
 }
 
 export default function* root() {

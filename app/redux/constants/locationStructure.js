@@ -11,5 +11,3 @@ export const ADD_FIELD = 'ADD_FIELD';
 export const REMOVE_FIELD = 'REMOVE_FIELD';
 
 export const INIT_LOCATION_STRUCTURE = 'INIT_LOCATION_STRUCTURE';
-
-

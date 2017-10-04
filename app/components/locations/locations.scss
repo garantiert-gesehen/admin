@@ -1,0 +1,23 @@
+.locations {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0;
+  flex-direction: column;
+  padding: 20px;
+  margin-top: 20px;
+  align-items: flex-start;
+
+  &__table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    min-width: 100%;
+  }
+
+  td, th {
+    padding: 5px 20px;
+  }
+
+  td {
+    border-top: 1px solid #eee;
+  }
+}
