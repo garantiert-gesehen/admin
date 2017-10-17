@@ -57,3 +57,35 @@ export const deleteLocation = (locationId) => {
       throw new Error('wrong delete request for location');
     });
 };
+
+export const getLists = () => {
+  return axios.get('/api/lists')
+    .then(res => res.data)
+    .catch(() => {
+      throw new Error('wrong get request for lists');
+    });
+};
+
+export const updateList = (listId, name, items) => {
+  return axios.put(`/api/lists/${listId}`, { name, items })
+    .then(res => res.data)
+    .catch(() => {
+      throw new Error('wrong update request for lists');
+    });
+};
+
+export const createList = (name, items) => {
+  return axios.post('/api/lists', { name, items })
+    .then(res => res.data)
+    .catch(() => {
+      throw new Error('wrong create request for lists');
+    });
+};
+
+export const deleteList = (listId) => {
+  return axios.delete(`/api/lists/${listId}`)
+    .then(res => res.data)
+    .catch(() => {
+      throw new Error('wrong delete request for list');
+    });
+};
