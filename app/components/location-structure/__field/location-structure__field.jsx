@@ -7,7 +7,7 @@ import set from 'lodash/set';
 import Checkbox from '../../checkbox/checkbox.jsx';
 import Input from '../../input/input.jsx';
 import Dropdown from '../../dropdown/dropdown.jsx';
-import { LOCATION_STRUCTURE_FIELD_TYPES } from '../../../../server/config/constants';
+import { LOCATION_STRUCTURE_FIELD_TYPES, SELECTIONS } from '../../../../server/config/constants';
 const TYPES = LOCATION_STRUCTURE_FIELD_TYPES.map(type => ({ label: type, value: type }));
 
 import './location-structure__field.scss';
@@ -18,7 +18,15 @@ class Field extends Component {
   };
 
   updateType = (value) => {
-    this.props.onChange(this.props.index, { ...this.props.field, type: value });
+    const result = {
+      ...this.props.field,
+      type: value
+    };
+
+    if (!SELECTIONS.includes(value)) {
+      result.list = undefined;
+    }
+    this.props.onChange(this.props.index, result);
   };
 
   updatePermissions = (mode, role, value) => {
@@ -28,12 +36,16 @@ class Field extends Component {
     this.props.onChange(this.props.index, field);
   };
 
+  updateList = (value) => {
+    this.props.onChange(this.props.index, { ...this.props.field, list: value });
+  };
+
   remove = () => {
     this.props.onRemove(this.props.index);
   };
 
   render() {
-    const { field } = this.props;
+    const { field, lists } = this.props;
     const { permissions = {} } = field;
     const { read = {}, update = {} } = permissions;
 
@@ -55,6 +67,15 @@ class Field extends Component {
             value={field.type}
             onChange={this.updateType}
           />
+          {SELECTIONS.includes(field.type) && (
+            <Dropdown
+              auto
+              source={lists.map((list) => ({ label: list.name, value: list._id }))}
+              className="location-structure__dropdown"
+              value={field.list}
+              onChange={this.updateList}
+            />
+          )}
         </td>
         <td>
           <div className="location-structure__permissions">

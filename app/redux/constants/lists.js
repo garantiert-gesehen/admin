@@ -1,0 +1,19 @@
+export const GET_LISTS = 'GET_LISTS';
+export const GET_LISTS_SUCCESS = 'GET_LISTS_SUCCESS';
+export const GET_LISTS_FAIL = 'GET_LISTS_FAIL';
+
+export const CREATE_LIST = 'CREATE_LIST';
+export const CREATE_LIST_SUCCESS = 'CREATE_LIST_SUCCESS';
+export const CREATE_LIST_FAIL = 'CREATE_LIST_FAIL';
+
+export const UPDATE_LIST = 'UPDATE_LIST';
+export const UPDATE_LIST_SUCCESS = 'UPDATE_LIST_SUCCESS';
+export const UPDATE_LIST_FAIL = 'UPDATE_LIST_FAIL';
+
+export const DELETE_LIST = 'DELETE_LIST';
+export const DELETE_LIST_SUCCESS = 'DELETE_LIST_SUCCESS';
+export const DELETE_LIST_FAIL = 'DELETE_LIST_FAIL';
+
+export const SET_LIST = 'SET_LIST';
+
+export const INIT_LISTS = 'INIT_LISTS';

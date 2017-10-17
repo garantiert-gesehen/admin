@@ -1,0 +1,20 @@
+@import '../../styles/settings';
+
+.lists {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+
+  &__footer {
+    flex-shrink: 0;
+    border-top: 1px solid transparentize($colorBlack, 0.86);
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+  }
+}

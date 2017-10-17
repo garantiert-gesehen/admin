@@ -1,6 +1,7 @@
 import reactApp from '../app/server.js';
 import users from './controllers/users';
 import * as locations from './controllers/locations';
+import * as lists from './controllers/lists';
 import * as locationStructures from './controllers/locationStructures';
 
 module.exports = (app) => {
@@ -16,6 +17,11 @@ module.exports = (app) => {
 
   app.get('/api/locationStructures/current', locationStructures.getCurrentStructure);
   app.put('/api/locationStructures/current', locationStructures.updateCurrentStructure);
+
+  app.get('/api/lists', lists.getAll);
+  app.post('/api/lists', lists.create);
+  app.put('/api/lists/:listId', lists.update);
+  app.delete('/api/lists/:listId', lists.remove);
 
   app.get('*', reactApp);
 };

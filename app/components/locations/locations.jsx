@@ -15,6 +15,10 @@ class Locations extends Component {
     document.addEventListener('click', this.onClickHandler, true);
   };
 
+  componentWillUnmount() {
+    document.removeEventListener('click', this.onClickHandler, true);
+  }
+
   onClickHandler = () => {
     if (this.props.activeField) {
       this.props.activateField({});
