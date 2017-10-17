@@ -2,11 +2,10 @@ import mongoose from 'mongoose';
 
 const LocationStructureSchema = new mongoose.Schema({
   fields: [{
+    order: { type: Number, default: 0 },
     name: { type: String, required: true },
     type: { type: String, required: true },
-    items: [{
-      name: String
-    }],
+    list: { type: mongoose.Schema.Types.ObjectId, ref: 'List' },
     permissions: {
       read: {
         owner: { type: Boolean },

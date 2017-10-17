@@ -30,6 +30,16 @@ class Menu extends Component {
           >
             Locations
           </Link>
+          {isAdmin && (
+            <Link
+              isRouter
+              className="menu__item"
+              activeClassName="menu__item_active"
+              to="/lists"
+            >
+              Lists
+            </Link>
+          )}
         </div>
         <div className="menu__user">
           <span className="menu__name">{`${firstName} ${lastName}`}</span>

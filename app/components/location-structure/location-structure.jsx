@@ -20,7 +20,7 @@ class LocationStructure extends Component {
   };
 
   render() {
-    const { fields, changeField, addField, removeField, loading, saving } = this.props;
+    const { fields, changeField, addField, removeField, loading, saving, lists } = this.props;
 
     return (
       <form className="location-structure" onSubmit={this.submit}>
@@ -46,6 +46,7 @@ class LocationStructure extends Component {
               <tbody>
               {fields.map((field, index) => (
                 <Field
+                  lists={lists}
                   key={field._id || index}
                   field={field}
                   onChange={changeField}

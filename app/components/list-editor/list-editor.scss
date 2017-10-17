@@ -1,0 +1,56 @@
+@import '../../styles/settings';
+
+.list-editor {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__content {
+    flex-grow: 1;
+    padding: 20px;
+  }
+
+  &__footer {
+    flex-shrink: 0;
+    border-top: 1px solid transparentize($colorBlack, 0.86);
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+  }
+
+  &__delete-button {
+    margin-right: 20px;
+  }
+
+  .list-editor__item-input {
+    width: 300px;
+  }
+
+  .list-editor__add {
+    margin-top: 10px;
+    cursor: pointer;
+    color: $materialGreen700;
+    font-weight: bold;
+    font-size: 32px;
+
+    &:hover {
+      color: $materialGreen900;
+    }
+  }
+
+  .list-editor__remove {
+    margin-left: 30px;
+    color: $materialRed800;
+    cursor: pointer;
+    font-weight: bold;
+
+    &:hover {
+      color: $materialRed500;
+    }
+  }
+}

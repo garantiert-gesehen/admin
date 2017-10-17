@@ -43,7 +43,7 @@ const Html = ({ body, preloadedState }) => {
           <script {...props} key={key} />
         )}
         <script dangerouslySetInnerHTML={{__html: preloadedStateString}} />
-        <script src="bundle.js" />
+        <script src="/bundle.js" />
       </body>
     </html>
   );

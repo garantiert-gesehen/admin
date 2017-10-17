@@ -6,6 +6,10 @@ const Location = mongoose.model('Location');
 import { selectCurrentStructure } from './locationStructures';
 
 export function getAll(req, res) {
+  if (!req.user.isAdmin && !req.user.isScout && !req.user.isOwner) {
+    return res.status(403).json({ message: { structure: { kind: 'permissions' } } });
+  }
+
   Location
     .find({})
     .populate({
@@ -53,6 +57,10 @@ export function getLocationById(req, res) {
 }
 
 export function create(req, res) {
+  if (!req.user.isAdmin && !req.user.isScout) {
+    return res.status(403).json({ message: { structure: { kind: 'permissions' } } });
+  }
+
   const { body } = req;
 
   body.creator = req.user.id;
@@ -79,6 +87,10 @@ export function create(req, res) {
 }
 
 export function deleteLocation(req, res) {
+  if (!req.user.isAdmin) {
+    return res.status(403).json({ message: { structure: { kind: 'permissions' } } });
+  }
+
   Location.findByIdAndRemove(req.params.locationId, (err) => {
     if (err) {
       return res.status(400).json({ message: err.errors });

@@ -6,6 +6,8 @@ import Inner from './components/inner/inner.jsx';
 import Admin from './components/admin/admin.jsx';
 import Dashboard from './components/dashboard/dashboard.jsx';
 import LocationStructure from './components/location-structure/locationStructureContainer';
+import Lists from './components/lists/listsContainer';
+import ListEditor from './components/list-editor/listEditorContainer';
 import Locations from './components/locations/locationsContainer';
 import Login from './components/login/loginContainer';
 
@@ -55,6 +57,21 @@ export default store => {
             onEnter={(nextState, replace, callback) => requireRole(nextState, replace, callback, ['isAdmin'])}
           />
           <Route path="/locations" component={Locations} />
+          <Route
+            path="/lists"
+            component={Lists}
+            onEnter={(nextState, replace, callback) => requireRole(nextState, replace, callback, ['isAdmin'])}
+          />
+          <Route
+            path="/lists/new"
+            component={ListEditor}
+            onEnter={(nextState, replace, callback) => requireRole(nextState, replace, callback, ['isAdmin'])}
+          />
+          <Route
+            path="/lists/:id"
+            component={ListEditor}
+            onEnter={(nextState, replace, callback) => requireRole(nextState, replace, callback, ['isAdmin'])}
+          />
         </Route>
       </Route>
     </Route>
