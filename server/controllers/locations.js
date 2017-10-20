@@ -12,6 +12,7 @@ export function getAll(req, res) {
 
   Location
     .find({})
+    .sort('-dateCreated')
     .populate({
       path: 'owner',
       select: 'profile'

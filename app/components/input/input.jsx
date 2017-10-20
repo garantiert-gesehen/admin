@@ -5,7 +5,7 @@ import { Input as ToolboxInput } from 'react-toolbox/lib/input';
 import extendTheme from '../../utils/extendTheme';
 import './input.scss';
 
-class Input extends  Component {
+class Input extends Component {
   render() {
     const theme = {
       input: 'input',
