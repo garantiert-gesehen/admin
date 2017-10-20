@@ -17,6 +17,9 @@ class SingleSelection extends Component {
   }
 
   onMultiChange = (items = []) => {
+    if (!Array.isArray(items)) {
+      return this.props.update();
+    }
     const newValues = items.map(item => item._id);
 
     if (!isEqual(newValues, this.props.value)) {
@@ -44,11 +47,9 @@ class SingleSelection extends Component {
     return <Placeholder hint={`Select ${title}`} value={selectedItem && selectedItem.name} />;
   };
 
-
-  renderMulitPlaceholder = () => {
+  renderMultiPlaceholder = () => {
     const { title, list = {}, value } = this.props;
     const selectedItems = (list.items || []).filter(item => value.includes(item._id));
-
 
     return <Placeholder hint={`Select ${title}`} value={selectedItems.map(item => item.name).join(', ')} />;
   };
@@ -74,7 +75,7 @@ class SingleSelection extends Component {
         />
         {!active && (
           isMultiSelection
-            ? this.renderMulitPlaceholder()
+            ? this.renderMultiPlaceholder()
             : this.renderSinglePlaceholder()
           )
         }
