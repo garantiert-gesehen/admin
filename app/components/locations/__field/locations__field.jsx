@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
 
 import Widget from '../../widget/widget.jsx';
 import Progress from '../../progress/progress.jsx';
@@ -19,11 +20,22 @@ class Field extends Component {
   };
 
   render() {
-    const { value, type, name, updating, active } = this.props;
+    const { value, type, name, updating, active, list } = this.props;
 
     return (
-      <td className="locations__field" onClick={this.onClick}>
-        <Widget active={active} type={type} value={value} title={name} update={this.update} updating={updating} />
+      <td
+        className={classNames('locations__field', { 'locations__field_active': active })}
+        onClick={this.onClick}
+      >
+        <Widget
+          active={active}
+          type={type}
+          value={value}
+          title={name}
+          update={this.update}
+          updating={updating}
+          list={list}
+        />
         {updating && <Progress className="locations__progress" />}
       </td>
     );

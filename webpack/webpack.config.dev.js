@@ -30,6 +30,10 @@ module.exports = Object.assign(webpackConfigBase, {
         include: path.resolve(__dirname, '..', 'app')
       },
       {
+        test: /\.css/,
+        loader: 'style!css'
+      },
+      {
         test: /\.scss/,
         loader: 'style!css!sass!postcss',
         include: path.resolve(__dirname, '..', 'app')

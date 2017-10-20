@@ -1,14 +1,21 @@
 import { connect } from 'react-redux';
 import {
-  init, createLocation, updateLocationField, deleteLocation, activateLocationField
+  init as initLocations, createLocation, updateLocationField, deleteLocation, activateLocationField
 } from '../../redux/actions/locations';
+import { init as initLists } from '../../redux/actions/lists';
 
 import Locations from './locations.jsx';
 
-const mapStateToProps = ({ locations }) => ({
+const mapStateToProps = ({ locations, lists }) => ({
   activeField: locations.activeField,
   locations: locations.locations,
-  structureFields: locations.structureFields,
+  structureFields: locations.structureFields.map(field => field.list
+    ? {
+      ...field,
+      list: lists.lists.find(list => list._id === field.list)
+    }
+    : field
+  ),
   loading: locations.loading,
   updatingFields: locations.updatingFields,
   creating: locations.creating,
@@ -17,7 +24,10 @@ const mapStateToProps = ({ locations }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  init: () => dispatch(init()),
+  init: () => {
+    dispatch(initLocations());
+    dispatch(initLists());
+  },
   createLocation: () => dispatch(createLocation()),
   updateLocationField: (locationId, fieldId, value) => dispatch(updateLocationField(locationId, fieldId, value)),
   activateField: (fieldId, locationId) => dispatch(activateLocationField(fieldId, locationId)),

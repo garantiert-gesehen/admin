@@ -4,6 +4,10 @@
     height: 60px;
     cursor: pointer;
     max-width: 300px;
+
+    &_active {
+      min-width: 300px;
+    }
   }
 
   &__progress.locations__progress {
