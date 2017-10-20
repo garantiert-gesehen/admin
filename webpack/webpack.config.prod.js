@@ -40,6 +40,10 @@ module.exports = Object.assign(webpackConfigBase, {
         include: path.resolve(__dirname, '..', 'app')
       },
       {
+        test: /\.css/,
+        loader: ExtractTextPlugin.extract('style', 'css'),
+      },
+      {
         test: /\.scss/,
         loader: ExtractTextPlugin.extract('style', 'css!sass!postcss'),
         include: path.resolve(__dirname, '..', 'app')
