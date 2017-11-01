@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 
 import WidgetDate from './_date/widget_date.jsx';
+import WidgetImage from './_image/widget_image.jsx';
 import WidgetText from './_text/widget_text.jsx';
 import WidgetSelection from './_selection/widget_selection.jsx';
 
@@ -9,6 +10,8 @@ import './widget.scss';
 
 function getComponent(type) {
   switch (type) {
+    case 'image':
+      return WidgetImage;
     case 'date':
       return WidgetDate;
     case 'text':

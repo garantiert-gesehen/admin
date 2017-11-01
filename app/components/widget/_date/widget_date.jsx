@@ -55,7 +55,7 @@ class WidgetDate extends Component {
           value={date}
         />
         {!active && <Placeholder hint={`Set ${title}`} value={displayDate} />}
-        {!!value && <FontIcon className="widget__clear" value="close" onClick={this.clear} />}
+        {!!value && <FontIcon className="widget__control-icon" value="close" onClick={this.clear} />}
       </div>
     );
   }

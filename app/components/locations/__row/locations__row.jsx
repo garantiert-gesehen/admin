@@ -15,8 +15,8 @@ function getFieldValue(location, fieldId) {
 }
 
 class Row extends Component {
-  updateLocationField = (fieldId, value) => {
-    this.props.updateLocationField(this.props.location._id, fieldId, value);
+  updateLocationField = (fieldId, value, options) => {
+    this.props.updateLocationField(this.props.location._id, fieldId, value, options);
   };
 
   isFieldUpdating = (fieldId) => {

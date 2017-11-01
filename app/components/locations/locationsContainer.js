@@ -29,7 +29,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(initLists());
   },
   createLocation: () => dispatch(createLocation()),
-  updateLocationField: (locationId, fieldId, value) => dispatch(updateLocationField(locationId, fieldId, value)),
+  updateLocationField: (locationId, fieldId, value, options) =>
+    dispatch(updateLocationField(locationId, fieldId, value, options)),
   activateField: (fieldId, locationId) => dispatch(activateLocationField(fieldId, locationId)),
   deleteLocation: (locationId) => dispatch(deleteLocation(locationId)),
 });

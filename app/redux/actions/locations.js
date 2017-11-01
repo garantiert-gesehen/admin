@@ -12,8 +12,8 @@ export const getLocationsSuccess = (locations, structureFields) =>
 export const getLocationsFail = (error) =>
   ({ type: constants.GET_LOCATIONS_FAIL, error });
 
-export const updateLocationField = (locationId, fieldId, value) =>
-  ({ type: constants.UPDATE_LOCATION_FIELD, value, fieldId, locationId });
+export const updateLocationField = (locationId, fieldId, value, options) =>
+  ({ type: constants.UPDATE_LOCATION_FIELD, value, fieldId, locationId, options });
 
 export const updateLocationFieldSuccess = (location, fieldId) =>
   ({ type: constants.UPDATE_LOCATION_FIELD_SUCCESS, location, fieldId });

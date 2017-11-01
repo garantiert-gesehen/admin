@@ -3,6 +3,7 @@ import users from './controllers/users';
 import * as locations from './controllers/locations';
 import * as lists from './controllers/lists';
 import * as locationStructures from './controllers/locationStructures';
+import * as s3 from './controllers/s3';
 
 module.exports = (app) => {
   app.post('/api/login', users.postLogin);
@@ -22,6 +23,12 @@ module.exports = (app) => {
   app.post('/api/lists', lists.create);
   app.put('/api/lists/:listId', lists.update);
   app.delete('/api/lists/:listId', lists.remove);
+
+  app.post('/save-details', (req, res) => {
+    // TODO: Read POSTed form data and do something useful
+  });
+
+  app.get('/api/get-signed-request-s3', s3.getSignedRequest);
 
   app.get('*', reactApp);
 };

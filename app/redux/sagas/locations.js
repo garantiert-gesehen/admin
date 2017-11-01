@@ -14,9 +14,24 @@ export function* getLocations() {
   }
 }
 
-export function* updateLocationField({ locationId, fieldId, value }) {
+export function* uploadFile(formData) {
+  const res = yield call(api.getSignedRequest, formData);
+  console.log(res);
+  const { signedRequest, url } = res.data;
+  yield call(api.uploadFile, formData, signedRequest);
+
+  console.log('URL!!', url);
+  return url;
+}
+
+export function* updateLocationField({ locationId, fieldId, value, options = {} }) {
   try {
-    const location = yield call(api.updateLocationField, { locationId, fieldId, value });
+    let fieldValue = value;
+    console.log(value);
+    if (options.upload) {
+      fieldValue = yield call(uploadFile, value[0]);
+    }
+    const location = yield call(api.updateLocationField, { locationId, fieldId, value: fieldValue });
 
     yield put(actions.updateLocationFieldSuccess(location, fieldId));
   } catch (error) {

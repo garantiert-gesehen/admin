@@ -1,5 +1,28 @@
 .widget {
+  height: 100%;
+  display: flex;
+  align-items: center;
+
   &_hidden {
     display: none;
+  }
+
+  .widget__control-icon {
+    visibility: hidden;
+    opacity: 0;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    transition: opacity 0.2s ease-out;
+  }
+
+  &:hover .widget__control-icon {
+    visibility: visible;
+    opacity: 0.2;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }

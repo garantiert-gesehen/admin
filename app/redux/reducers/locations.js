@@ -12,8 +12,8 @@ const initialState = {
   error: ''
 };
 
-function filterUpdatingFields(updatingFields, { fieldId, location }) {
-  return updatingFields.filter(field => field.fieldId !== fieldId || field.locationId !== location._id);
+function filterUpdatingFields(updatingFields, fieldId, locationId) {
+  return updatingFields.filter(field => field.fieldId !== fieldId || field.locationId !== locationId);
 }
 
 export default (state = initialState, action) => {
@@ -34,11 +34,11 @@ export default (state = initialState, action) => {
       return { ...state, updatingFields, error: '' };
     }
     case constants.UPDATE_LOCATION_FIELD_FAIL: {
-      const updatingFields = filterUpdatingFields(state.updatingFields, action);
+      const updatingFields = filterUpdatingFields(state.updatingFields, action.fieldId, action.locationId);
       return { ...state, updatingFields, error: action.error };
     }
     case constants.UPDATE_LOCATION_FIELD_SUCCESS: {
-      const updatingFields = filterUpdatingFields(state.updatingFields, action);
+      const updatingFields = filterUpdatingFields(state.updatingFields, action.fieldId, action.location._id);
       const indexOfLocation = state.locations.findIndex(location => location._id === action.location._id);
       const newLocations = [...state.locations];
       newLocations[indexOfLocation] = action.location;

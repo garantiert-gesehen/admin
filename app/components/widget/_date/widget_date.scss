@@ -4,25 +4,5 @@
   &_date {
     padding-right: 10px;
     position: relative;
-
-    .widget__clear {
-      visibility: hidden;
-      opacity: 0;
-      top: 0;
-      font-size: 20px;
-      cursor: pointer;
-      position: absolute;
-      right: 0;
-      transition: opacity 0.2s ease-out;
-    }
-
-    &:hover .widget__clear {
-      visibility: visible;
-      opacity: 0.2;
-
-      &:hover {
-        opacity: 1;
-      }
-    }
   }
 }
