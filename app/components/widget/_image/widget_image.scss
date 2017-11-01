@@ -1,0 +1,27 @@
+@import '../../../styles/settings';
+
+.widget {
+  &_image {
+    padding-right: 10px;
+    position: relative;
+  }
+
+  &__image-icon {
+    font-size: 24px;
+    opacity: 0.2;
+    transition: opacity 0.2s ease-out;
+
+    &_picture {
+      opacity: 0.3;
+      color: $colorBlack;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__image-icon-link {
+    display: flex;
+  }
+}

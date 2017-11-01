@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "autoprefixer": "^6.3.7",
+    "aws-sdk": "^2.138.0",
     "axios": "^0.16.2",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
@@ -73,6 +74,7 @@
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-saga": "^0.15.6",
+    "s3": "^4.4.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",

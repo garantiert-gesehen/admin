@@ -7,8 +7,8 @@ import Progress from '../../progress/progress.jsx';
 import './locations__field.scss';
 
 class Field extends Component {
-  update = (value) => {
-    this.props.update(this.props._id, value);
+  update = (value, options) => {
+    this.props.update(this.props._id, value, options);
   };
 
   onClick = (e) => {

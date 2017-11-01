@@ -31,4 +31,5 @@ require('./config/passport')(app, passport);
 require('./config/express')(app, passport);
 require('./routes')(app);
 
+app.use(express.static('./public'));
 app.listen(app.get('port'));

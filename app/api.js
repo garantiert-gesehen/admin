@@ -89,3 +89,13 @@ export const deleteList = (listId) => {
       throw new Error('wrong delete request for list');
     });
 };
+
+export const getSignedRequest = (file) => {
+  const fileName = file.get('fileName');
+  const fileType = file.get('fileType');
+  return axios.get(`/api/get-signed-request-s3?fileName=${fileName}&fileType=${fileType}`);
+};
+
+export const uploadFile = (file, signedRequest) => {
+  return axios.put(signedRequest, file.get('file'));
+};
